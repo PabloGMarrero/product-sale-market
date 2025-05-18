@@ -1,4 +1,4 @@
-package ar.edu.unq.product_sale.infrastructure.web.dto.product;
+package ar.edu.unq.product_sale.infrastructure.web.in.dto.product;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

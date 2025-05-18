@@ -5,7 +5,7 @@ import ar.edu.unq.product_sale.application.exceptions.ProductAlreadyExistsExcept
 import ar.edu.unq.product_sale.domain.model.Product;
 import ar.edu.unq.product_sale.domain.port.out.ProductRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.SellerRepositoryPort;
-import ar.edu.unq.product_sale.infrastructure.web.dto.product.ProductCreateDTO;
+import ar.edu.unq.product_sale.infrastructure.web.in.dto.product.ProductCreateDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

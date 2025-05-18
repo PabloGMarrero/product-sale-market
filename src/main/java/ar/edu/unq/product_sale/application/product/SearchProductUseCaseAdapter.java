@@ -5,7 +5,7 @@ import ar.edu.unq.product_sale.application.filters.FilterStrategy;
 import ar.edu.unq.product_sale.domain.model.Product;
 import ar.edu.unq.product_sale.domain.port.in.product.SearchProductUserCasePort;
 import ar.edu.unq.product_sale.domain.port.out.ProductRepositoryPort;
-import ar.edu.unq.product_sale.infrastructure.web.dto.product.ProductSearchFilterDTO;
+import ar.edu.unq.product_sale.infrastructure.web.in.dto.product.ProductSearchFilterDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

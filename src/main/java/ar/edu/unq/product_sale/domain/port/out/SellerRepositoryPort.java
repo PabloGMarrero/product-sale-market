@@ -1,11 +1,14 @@
 package ar.edu.unq.product_sale.domain.port.out;
 
+import ar.edu.unq.product_sale.domain.port.out.dto.SellerDTO;
+
+import java.util.Optional;
+
 public interface SellerRepositoryPort {
 
-    //TODO ver como manejamos esto ya que el vendedor no está en este contexto
-    //Optional<Seller> findById(String sellerId);
+    Optional<SellerDTO> findById(String sellerId);
 
-    //Optional<Seller> findByIdAndDeletedFalse(String sellerId);
+    Optional<SellerDTO> findByIdAndDeletedFalse(String sellerId);
 
-    //boolean existsByCompanyEmail(String companyEmail);
+    boolean existsByCompanyEmail(String companyEmail);
 }

@@ -1,9 +1,9 @@
-package ar.edu.unq.product_sale.infrastructure.web;
+package ar.edu.unq.product_sale.infrastructure.web.in;
 
 import ar.edu.unq.product_sale.domain.model.Sale;
 import ar.edu.unq.product_sale.domain.port.in.sale.CreateSaleUseCasePort;
-import ar.edu.unq.product_sale.infrastructure.web.dto.sale.SaleCreateDTO;
-import ar.edu.unq.product_sale.infrastructure.web.dto.sale.SaleResponseDTO;
+import ar.edu.unq.product_sale.infrastructure.web.in.dto.sale.SaleCreateDTO;
+import ar.edu.unq.product_sale.infrastructure.web.in.dto.sale.SaleResponseDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

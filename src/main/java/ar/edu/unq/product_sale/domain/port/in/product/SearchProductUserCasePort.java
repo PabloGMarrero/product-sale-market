@@ -1,7 +1,7 @@
 package ar.edu.unq.product_sale.domain.port.in.product;
 
 import ar.edu.unq.product_sale.domain.model.Product;
-import ar.edu.unq.product_sale.infrastructure.web.dto.product.ProductSearchFilterDTO;
+import ar.edu.unq.product_sale.infrastructure.web.in.dto.product.ProductSearchFilterDTO;
 import jakarta.validation.Valid;
 
 import java.util.List;

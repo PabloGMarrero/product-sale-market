@@ -1,11 +1,11 @@
-package ar.edu.unq.product_sale.infrastructure.web;
+package ar.edu.unq.product_sale.infrastructure.web.in;
 
 import ar.edu.unq.product_sale.domain.model.Product;
 import ar.edu.unq.product_sale.domain.port.in.product.CreateProductUseCasePort;
 import ar.edu.unq.product_sale.domain.port.in.product.DeleteProductUseCasePort;
 import ar.edu.unq.product_sale.domain.port.in.product.EditProductUseCasePort;
 import ar.edu.unq.product_sale.domain.port.in.product.SearchProductUserCasePort;
-import ar.edu.unq.product_sale.infrastructure.web.dto.product.*;
+import ar.edu.unq.product_sale.infrastructure.web.in.dto.product.*;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

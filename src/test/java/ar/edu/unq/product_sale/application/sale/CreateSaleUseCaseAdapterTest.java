@@ -6,7 +6,7 @@ import ar.edu.unq.product_sale.domain.model.Sale;
 import ar.edu.unq.product_sale.domain.port.out.ProductRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.SaleRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.UserRepositoryPort;
-import ar.edu.unq.product_sale.infrastructure.web.dto.sale.SaleCreateDTO;
+import ar.edu.unq.product_sale.infrastructure.web.in.dto.sale.SaleCreateDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

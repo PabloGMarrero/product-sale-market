@@ -1,11 +1,11 @@
-package ar.edu.unq.product_sale.infrastructure.web;
+package ar.edu.unq.product_sale.infrastructure.web.in;
 
 import ar.edu.unq.product_sale.application.exceptions.ElementNotFoundException;
 import ar.edu.unq.product_sale.application.exceptions.FilterNotSupportedException;
 import ar.edu.unq.product_sale.application.exceptions.ProductAlreadyExistsException;
 import ar.edu.unq.product_sale.domain.model.NotStockEnoughException;
-import ar.edu.unq.product_sale.infrastructure.web.dto.error.GenericErrorResponseDTO;
-import ar.edu.unq.product_sale.infrastructure.web.dto.error.ValidationErrorResponseDTO;
+import ar.edu.unq.product_sale.infrastructure.web.in.dto.error.GenericErrorResponseDTO;
+import ar.edu.unq.product_sale.infrastructure.web.in.dto.error.ValidationErrorResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

@@ -7,7 +7,7 @@ import ar.edu.unq.product_sale.domain.port.in.sale.CreateSaleUseCasePort;
 import ar.edu.unq.product_sale.domain.port.out.ProductRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.SaleRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.UserRepositoryPort;
-import ar.edu.unq.product_sale.infrastructure.web.dto.sale.SaleCreateDTO;
+import ar.edu.unq.product_sale.infrastructure.web.in.dto.sale.SaleCreateDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
