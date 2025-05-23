@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option java_package = "ar.edu.unq.product_sale";
+option java_package = "ar.edu.unq.product_sale.seller";
 option java_multiple_files = true;
 
 service SellerService {
