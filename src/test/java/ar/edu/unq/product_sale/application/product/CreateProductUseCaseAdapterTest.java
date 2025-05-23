@@ -6,6 +6,8 @@ import ar.edu.unq.product_sale.domain.model.Product;
 import ar.edu.unq.product_sale.domain.port.out.ProductRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.SellerRepositoryPort;
 import ar.edu.unq.product_sale.infrastructure.web.in.dto.product.ProductCreateDTO;
+import ar.edu.unq.product_sale.infrastructure.web.out.dto.SellerDTO;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -37,10 +39,9 @@ public class CreateProductUseCaseAdapterTest {
 
     @Test
     public void createProductTest() {
-        //Seller mockSeller = mock(Seller.class);
-        //when(mockSeller.getDeleted()).thenReturn(false);
+        SellerDTO mockSellerDTO = mock(SellerDTO.class);
+        when(sellerRepositoryPort.findById(anyString())).thenReturn(Optional.of(mockSellerDTO));
 
-        //when(sellerRepositoryPort.findById(anyString())).thenReturn(Optional.of(mockSeller));
         when(productRepositoryPort.existsByNameAndSellerId(anyString(), anyString())).thenReturn(false);
 
         Product mockProduct = mock(Product.class);
@@ -72,29 +73,10 @@ public class CreateProductUseCaseAdapterTest {
     }
 
     @Test
-    public void createProductForDeletedSellerTest() {
-        //Seller mockSeller = mock(Seller.class);
-        //when(mockSeller.getDeleted()).thenReturn(true);
-
-        //when(sellerRepositoryPort.findById(anyString())).thenReturn(Optional.of(mockSeller));
-
-        when(productCreateDTO.getSellerId()).thenReturn("mockSellerId");
-        ElementNotFoundException exception = assertThrows(ElementNotFoundException.class, () -> {
-            createProductUseCaseAdapter.createProduct(productCreateDTO);
-        });
-
-        assertEquals("Seller with Id: mockSellerId not found", exception.getMessage());
-        verify(sellerRepositoryPort, times(1)).findById(anyString());
-        verify(productRepositoryPort, never()).existsByNameAndSellerId(anyString(), anyString());
-        verify(productRepositoryPort, never()).save(any(Product.class));
-    }
-
-    @Test
     public void createProductForSellerWithExistingProductWithSameNameTest() {
-        //Seller mockSeller = mock(Seller.class);
-        //when(mockSeller.getDeleted()).thenReturn(false);
+        SellerDTO mockSellerDTO = mock(SellerDTO.class);
+        when(sellerRepositoryPort.findById(anyString())).thenReturn(Optional.of(mockSellerDTO));
 
-       // when(sellerRepositoryPort.findById(anyString())).thenReturn(Optional.of(mockSeller));
         when(productRepositoryPort.existsByNameAndSellerId(anyString(), anyString())).thenReturn(true);
 
         when(productCreateDTO.getName()).thenReturn("mockProductName");

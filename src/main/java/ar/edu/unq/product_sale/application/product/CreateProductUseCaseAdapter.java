@@ -28,7 +28,6 @@ public class CreateProductUseCaseAdapter implements CreateProductUseCasePort {
     public Product createProduct(ProductCreateDTO productCreateDTO) {
 
         Optional<SellerDTO> sellerWithId = sellerRepositoryPort.findById(productCreateDTO.getSellerId());
-
         if(sellerWithId.isEmpty()) {
             throw new ElementNotFoundException("Seller", productCreateDTO.getSellerId());
         }
