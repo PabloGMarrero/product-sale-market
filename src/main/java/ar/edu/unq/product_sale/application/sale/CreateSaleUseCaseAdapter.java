@@ -53,7 +53,8 @@ public class CreateSaleUseCaseAdapter implements CreateSaleUseCasePort {
         Double saleValue = productWithId.getPrice() * saleCreateDTO.getAmount();
 
         Sale sale = new Sale(idForNewSale, saleCreateDTO.getProductId(), saleCreateDTO.getUserId(), saleValue);
-        notificationRepositoryPort.notifySale(sale);
+
+        notificationRepositoryPort.notifySale(saleCreateDTO, productWithId, saleValue);
         return saleRepositoryPort.save(sale);
     }
 }
