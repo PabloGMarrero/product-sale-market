@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "ar.edu.unq.seller_user";
+option java_multiple_files = true;
+
+service UserService {
+  rpc getUserById (UserGrpcRequest) returns (UserGrpcResponse);
+}
+
+message UserGrpcRequest {
+  string id = 1;
+}
+
+message UserGrpcResponse {
+  string id = 1;
+  string name = 2;
+  bool deleted = 3;
+}
+
