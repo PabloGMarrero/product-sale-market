@@ -8,8 +8,10 @@ import ar.edu.unq.product_sale.domain.port.out.ProductRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.SaleRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.UserRepositoryPort;
 import ar.edu.unq.product_sale.infrastructure.web.in.dto.sale.SaleCreateDTO;
+import ar.edu.unq.product_sale.infrastructure.web.out.dto.UserDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -32,11 +34,10 @@ public class CreateSaleUseCaseAdapter implements CreateSaleUseCasePort {
     @Override
     public Sale createSale(SaleCreateDTO saleCreateDTO) {
 
-        //TODO ver como manejamos esto ya que el usuario no está en este contexto
-//        Optional<User> userWithId = userRepositoryPort.findById(saleCreateDTO.getUserId());
-//        if(userWithId.isEmpty()){
-//            throw new ElementNotFoundException("User", saleCreateDTO.getUserId());
-//        }
+        Optional<UserDTO> userWithId = userRepositoryPort.findById(saleCreateDTO.getUserId());
+        if(userWithId.isEmpty()){
+            throw new ElementNotFoundException("User", saleCreateDTO.getUserId());
+        }
 
         Product productWithId = productRepositoryPort.findById(saleCreateDTO.getProductId())
                 .orElseThrow(() -> new ElementNotFoundException("Product", saleCreateDTO.getProductId()));

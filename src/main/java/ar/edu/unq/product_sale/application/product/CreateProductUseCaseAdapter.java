@@ -6,7 +6,7 @@ import ar.edu.unq.product_sale.domain.model.Product;
 import ar.edu.unq.product_sale.domain.port.in.product.CreateProductUseCasePort;
 import ar.edu.unq.product_sale.domain.port.out.ProductRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.SellerRepositoryPort;
-import ar.edu.unq.product_sale.domain.port.out.dto.SellerDTO;
+import ar.edu.unq.product_sale.infrastructure.web.out.dto.SellerDTO;
 import ar.edu.unq.product_sale.infrastructure.web.in.dto.product.ProductCreateDTO;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +28,7 @@ public class CreateProductUseCaseAdapter implements CreateProductUseCasePort {
     public Product createProduct(ProductCreateDTO productCreateDTO) {
 
         Optional<SellerDTO> sellerWithId = sellerRepositoryPort.findById(productCreateDTO.getSellerId());
-
-        if(sellerWithId.isEmpty() || sellerWithId.get().getDeleted()) {
+        if(sellerWithId.isEmpty()) {
             throw new ElementNotFoundException("Seller", productCreateDTO.getSellerId());
         }
 

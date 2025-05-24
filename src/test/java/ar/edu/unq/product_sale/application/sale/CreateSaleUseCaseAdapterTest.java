@@ -7,6 +7,8 @@ import ar.edu.unq.product_sale.domain.port.out.ProductRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.SaleRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.UserRepositoryPort;
 import ar.edu.unq.product_sale.infrastructure.web.in.dto.sale.SaleCreateDTO;
+import ar.edu.unq.product_sale.infrastructure.web.out.dto.UserDTO;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -37,14 +39,15 @@ public class CreateSaleUseCaseAdapterTest {
 
     @Test
     public void createSaleTest(){
-        //User mockUser = mock(User.class);
-        //when(userRepositoryPort.findById("mockUserId")).thenReturn(Optional.of(mockUser));
+        UserDTO mockUserDTO = mock(UserDTO.class);
+        when(userRepositoryPort.findById("mockUserId")).thenReturn(Optional.of(mockUserDTO));
 
         Product mockProduct = mock(Product.class);
         when(productRepositoryPort.findById("mockProductId")).thenReturn(Optional.of(mockProduct));
 
         when(productRepositoryPort.save(any(Product.class))).thenReturn(mockProduct);
-        Sale mockSale =mock(Sale.class);
+
+        Sale mockSale = mock(Sale.class);
         when(saleRepositoryPort.save(any(Sale.class))).thenReturn(mockSale);
 
         SaleCreateDTO mockSaleCreateDTO = mock(SaleCreateDTO.class);
@@ -80,10 +83,9 @@ public class CreateSaleUseCaseAdapterTest {
 
     @Test
     public void createSaleWithNonExistingProductTest(){
-        //User mockUser = mock(User.class);
-        //when(userRepositoryPort.findById("mockUserId")).thenReturn(Optional.of(mockUser));
+        UserDTO mockUserDTO = mock(UserDTO.class);
+        when(userRepositoryPort.findById("mockUserId")).thenReturn(Optional.of(mockUserDTO));
 
-        Product mockProduct = mock(Product.class);
         when(productRepositoryPort.findById("mockProductId")).thenReturn(Optional.empty());
 
         SaleCreateDTO mockSaleCreateDTO = mock(SaleCreateDTO.class);

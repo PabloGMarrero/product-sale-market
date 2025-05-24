@@ -1,7 +1,7 @@
 package ar.edu.unq.product_sale.infrastructure.web.out;
 
 import ar.edu.unq.product_sale.domain.port.out.UserRepositoryPort;
-import ar.edu.unq.product_sale.domain.port.out.dto.UserDTO;
+import ar.edu.unq.product_sale.infrastructure.web.out.dto.UserDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

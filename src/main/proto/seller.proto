@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "ar.edu.unq.product_sale";
+option java_multiple_files = true;
+
+service SellerService {
+  rpc getSellerById (SellerGrpcRequest) returns (SellerGrpcResponse);
+}
+
+message SellerGrpcRequest {
+  string id = 1;
+}
+
+message SellerGrpcResponse {
+  string id = 1;
+  string companyName = 2;
+  string companyEmail = 3;
+}
