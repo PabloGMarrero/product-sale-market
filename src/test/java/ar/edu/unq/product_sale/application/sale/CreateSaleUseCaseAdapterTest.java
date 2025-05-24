@@ -3,12 +3,12 @@ package ar.edu.unq.product_sale.application.sale;
 import ar.edu.unq.product_sale.application.exceptions.ElementNotFoundException;
 import ar.edu.unq.product_sale.domain.model.Product;
 import ar.edu.unq.product_sale.domain.model.Sale;
+import ar.edu.unq.product_sale.domain.port.out.NotificationRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.ProductRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.SaleRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.UserRepositoryPort;
 import ar.edu.unq.product_sale.infrastructure.web.in.dto.sale.SaleCreateDTO;
 import ar.edu.unq.product_sale.infrastructure.web.out.dto.UserDTO;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -37,6 +37,9 @@ public class CreateSaleUseCaseAdapterTest {
     @Mock
     private SaleRepositoryPort saleRepositoryPort;
 
+    @Mock
+    private NotificationRepositoryPort notificationRepositoryPort;
+
     @Test
     public void createSaleTest(){
         UserDTO mockUserDTO = mock(UserDTO.class);
@@ -60,6 +63,7 @@ public class CreateSaleUseCaseAdapterTest {
         verify(userRepositoryPort, times(1)).findById("mockUserId");
         verify(productRepositoryPort, times(1)).findById("mockProductId");
         verify(productRepositoryPort, times(1)).save(eq(mockProduct));
+        verify(notificationRepositoryPort, times(1)).notifySale(any(SaleCreateDTO.class), any(Product.class), anyDouble());
         verify(saleRepositoryPort, times(1)).save(any(Sale.class));
     }
 
@@ -78,6 +82,7 @@ public class CreateSaleUseCaseAdapterTest {
         verify(userRepositoryPort, times(1)).findById("mockUserId");
         verify(productRepositoryPort, never()).findById("mockProductId");
         verify(productRepositoryPort, never()).save(any(Product.class));
+        verify(notificationRepositoryPort, never()).notifySale(any(SaleCreateDTO.class), any(Product.class), anyDouble());
         verify(saleRepositoryPort, never()).save(any(Sale.class));
     }
 
@@ -100,6 +105,7 @@ public class CreateSaleUseCaseAdapterTest {
         verify(userRepositoryPort, times(1)).findById("mockUserId");
         verify(productRepositoryPort, times(1)).findById("mockProductId");
         verify(productRepositoryPort, never()).save(any(Product.class));
+        verify(notificationRepositoryPort, never()).notifySale(any(SaleCreateDTO.class), any(Product.class), anyDouble());
         verify(saleRepositoryPort, never()).save(any(Sale.class));
     }
 }

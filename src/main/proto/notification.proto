@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_package = "ar.edu.unq.product_sale.notification";
+option java_multiple_files = true;
+
+service NotificationService {
+  rpc notifySale (SaleNotificationGrpcRequest) returns (SaleNotificationGrpcResponse);
+}
+
+message SaleNotificationGrpcRequest {
+  string sellerId = 1;
+  string buyerId = 2;
+  string productId = 3;
+  int32 productAmount = 4;
+  double saleValue = 5;
+}
+
+message SaleNotificationGrpcResponse {
+  string notificationStatus = 1;
+}

@@ -1,9 +1,9 @@
 package ar.edu.unq.product_sale.infrastructure.web.out;
 
-import ar.edu.unq.product_sale.SellerGrpcRequest;
-import ar.edu.unq.product_sale.SellerGrpcResponse;
-import ar.edu.unq.product_sale.SellerServiceGrpc;
 import ar.edu.unq.product_sale.domain.port.out.SellerRepositoryPort;
+import ar.edu.unq.product_sale.seller.SellerGrpcRequest;
+import ar.edu.unq.product_sale.seller.SellerGrpcResponse;
+import ar.edu.unq.product_sale.seller.SellerServiceGrpc;
 import ar.edu.unq.product_sale.infrastructure.web.out.dto.SellerDTO;
 import io.grpc.StatusRuntimeException;
 import net.devh.boot.grpc.client.inject.GrpcClient;

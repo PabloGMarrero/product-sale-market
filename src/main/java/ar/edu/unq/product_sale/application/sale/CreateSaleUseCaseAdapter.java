@@ -4,6 +4,7 @@ import ar.edu.unq.product_sale.application.exceptions.ElementNotFoundException;
 import ar.edu.unq.product_sale.domain.model.Product;
 import ar.edu.unq.product_sale.domain.model.Sale;
 import ar.edu.unq.product_sale.domain.port.in.sale.CreateSaleUseCasePort;
+import ar.edu.unq.product_sale.domain.port.out.NotificationRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.ProductRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.SaleRepositoryPort;
 import ar.edu.unq.product_sale.domain.port.out.UserRepositoryPort;
@@ -20,15 +21,18 @@ public class CreateSaleUseCaseAdapter implements CreateSaleUseCasePort {
     private final ProductRepositoryPort productRepositoryPort;
     private final UserRepositoryPort userRepositoryPort;
     private final SaleRepositoryPort saleRepositoryPort;
+    private final NotificationRepositoryPort notificationRepositoryPort;
 
     public CreateSaleUseCaseAdapter(
             ProductRepositoryPort productRepositoryPort,
             UserRepositoryPort userRepositoryPort,
-            SaleRepositoryPort saleRepositoryPort
+            SaleRepositoryPort saleRepositoryPort,
+            NotificationRepositoryPort notificationRepositoryPort
     ) {
         this.productRepositoryPort = productRepositoryPort;
         this.userRepositoryPort = userRepositoryPort;
         this.saleRepositoryPort = saleRepositoryPort;
+        this.notificationRepositoryPort = notificationRepositoryPort;
     }
 
     @Override
@@ -49,6 +53,8 @@ public class CreateSaleUseCaseAdapter implements CreateSaleUseCasePort {
         Double saleValue = productWithId.getPrice() * saleCreateDTO.getAmount();
 
         Sale sale = new Sale(idForNewSale, saleCreateDTO.getProductId(), saleCreateDTO.getUserId(), saleValue);
+
+        notificationRepositoryPort.notifySale(saleCreateDTO, productWithId, saleValue);
         return saleRepositoryPort.save(sale);
     }
 }
